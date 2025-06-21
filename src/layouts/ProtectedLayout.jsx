@@ -1,11 +1,15 @@
-import { SettingOutlined, UserOutlined, BgColorsOutlined } from '@ant-design/icons';
+import {
+  SettingOutlined,
+  UserOutlined,
+  BgColorsOutlined,
+} from "@ant-design/icons";
 import { Drawer, Dropdown, Grid, Input, Layout } from "antd";
 import React, { useState } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import profileImage from "../assets/avatar/1.png";
 import Loader from "../components/loader/Loader";
 import Sidebar from "../components/sidebar/Sidebar";
-import ThemeToggle from '../components/sidebar/ThemeToggle'; // your toggle switch
+import ThemeToggle from "../components/sidebar/ThemeToggle";
 
 const { Header, Content } = Layout;
 const { useBreakpoint } = Grid;
@@ -38,20 +42,20 @@ const ProtectedLayout = () => {
 
   const items = [
     {
-      key: '1',
-      label: 'Profile',
+      key: "1",
+      label: "Profile",
       icon: <UserOutlined />,
     },
     {
-      key: '2',
-      label: 'Settings',
+      key: "2",
+      label: "Settings",
       icon: <SettingOutlined />,
     },
     {
-      type: 'divider',
+      type: "divider",
     },
     {
-      key: 'theme-toggle',
+      key: "theme-toggle",
       label: (
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-2">
@@ -64,7 +68,13 @@ const ProtectedLayout = () => {
   ];
 
   return (
-    <Layout className="min-h-screen">
+    <Layout
+      style={{
+        minHeight: "100vh",
+        background:
+          "linear-gradient(to bottom right, #D6D8DC, #BAC7DD, #BECADD, #D6D8DC)",
+      }}
+    >
       {/* Sidebar */}
       {isMobile ? (
         <Drawer
@@ -85,9 +95,9 @@ const ProtectedLayout = () => {
         <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       )}
 
-      {/* Content */}
-      <Layout>
-        <Header className="bg-white px-4 py-2 shadow-md dark:bg-gray-900 dark:text-white">
+      {/* Content Wrapper with Glass Effect */}
+      <Layout className="m-4 rounded-xl bg-white/5 dark:bg-black/30 backdrop-blur-lg shadow-lg transition-all duration-300">
+        <Header className="px-4 py-2 border-b border-gray-200 dark:border-gray-700 dark:text-white bg-white/10 dark:bg-black/30 backdrop-blur-lg shadow-md transition-all duration-300">
           <div className="flex flex-wrap items-center justify-between gap-4 w-full">
             {/* Left - Page Title */}
             <div className="min-w-[150px]">
@@ -108,7 +118,7 @@ const ProtectedLayout = () => {
 
             {/* Right - Profile & Menu */}
             <div className="flex items-center justify-end gap-4">
-              <Dropdown menu={{ items }} trigger={['click']}>
+              <Dropdown menu={{ items }} trigger={["click"]}>
                 <button
                   onClick={(e) => e.preventDefault()}
                   className="bg-transparent border-none cursor-pointer p-0"
@@ -134,7 +144,7 @@ const ProtectedLayout = () => {
           </div>
         </Header>
 
-        <Content className="p-4 bg-white/10 dark:bg-gray-800">
+        <Content className="p-4">
           <React.Suspense fallback={<Loader />}>
             <Outlet />
           </React.Suspense>
