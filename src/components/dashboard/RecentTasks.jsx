@@ -29,7 +29,7 @@ const RecentTasks = () => {
           key={task.id}
           className="w-full p-2 flex justify-between bg-white rounded-md"
         >
-          {/* left side */}
+          {/* left side s*/}
           <div className="flex gap-x-2 items-center">
             {/* image */}
             <div className="h-10 w-10 rounded-full bg-blue-200 uppercase" />
