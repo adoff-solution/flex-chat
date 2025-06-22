@@ -2,6 +2,7 @@ import {
   SettingOutlined,
   UserOutlined,
   BgColorsOutlined,
+  BellOutlined,
 } from "@ant-design/icons";
 import { Drawer, Dropdown, Grid, Input, Layout } from "antd";
 import React, { useState } from "react";
@@ -15,7 +16,7 @@ const { Header, Content } = Layout;
 const { useBreakpoint } = Grid;
 
 const ProtectedLayout = () => {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const screens = useBreakpoint();
   const location = useLocation();
@@ -72,7 +73,8 @@ const ProtectedLayout = () => {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(to bottom right, #D6D8DC, #BAC7DD, #BECADD, #D6D8DC)",
+          // "linear-gradient(to bottom right, #D6D8DC, #BAC7DD, #BECADD, #D6D8DC)",
+          "linear-gradient(#DEEBFF, #BAC7DD, #DEEBFF)"
       }}
     >
       {/* Sidebar */}
@@ -117,6 +119,8 @@ const ProtectedLayout = () => {
             )}
 
             {/* Right - Profile & Menu */}
+            <div className=" flex items-center gap-4">
+<BellOutlined style={{ fontSize: '24px', }}/>
             <div className="flex items-center justify-end gap-4">
               <Dropdown menu={{ items }} trigger={["click"]}>
                 <button
@@ -140,6 +144,7 @@ const ProtectedLayout = () => {
                   ☰
                 </button>
               )}
+            </div>
             </div>
           </div>
         </Header>

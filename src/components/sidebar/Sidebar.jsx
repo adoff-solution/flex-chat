@@ -63,7 +63,6 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile = false, onCloseDrawer }) =
       icon: <FileProtectOutlined style={{ fontSize: "22px", color: "#4564AA" }} />,
       label: "Projects",
     },
-    
     {
       key: "/earning",
       icon: <DollarOutlined style={{ fontSize: "22px", color: "#4564AA" }} />,
@@ -105,13 +104,25 @@ const Sidebar = ({ collapsed, setCollapsed, isMobile = false, onCloseDrawer }) =
       collapsible
       collapsed={collapsed}
       trigger={null}
-      className="bg-transparent mx-4 my-3 rounded-md sticky top-4 h-[calc(100vh-32px)] overflow-auto z-40"
+      className="bg-transparent mx-4 my-3 sticky top-4 h-[calc(100vh-32px)] overflow-auto z-40 bg-white rounded-md"
     >
-      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white rounded-t-md">
-        {/* ✅ Show logo only when collapsed */}
-        {!collapsed && (
-          <img src={logo} alt="logo" className=" sm:w-36 md:w-32 lg:w-32 h-auto object-contain" />
-        )}
+      <div className="flex items-center justify-between px-4 py-3 ">
+        {/* ✅ Logo with smooth transition */}
+        <div
+          className={`transition-all duration-300 ease-in-out overflow-hidden`}
+          style={{
+            width: collapsed ? 0 : 'auto',
+            maxWidth: collapsed ? 0 : '144px', // match sm:w-36
+          }}
+        >
+          {!collapsed && (
+            <img
+              src={logo}
+              alt="logo"
+              className="sm:w-36 md:w-32 lg:w-32 h-auto object-contain"
+            />
+          )}
+        </div>
         <Button
           type="text"
           onClick={() => setCollapsed(!collapsed)}
